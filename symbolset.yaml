@@ -1,0 +1,32 @@
+version: v4
+
+base: docker-registry.wikimedia.org/wikimedia-buster
+
+runs:
+  insecurely: true
+
+lives:
+  in: /srv/pronlex
+   
+variants:
+  production:
+    apt:
+      packages: [ gcc, build-essential, sqlite3, git ]
+    copies: 
+      - from: local
+        source: ./entrypoint.sh
+        destination: .
+      - from: local
+        source: ./goProjects
+        destination: ./goProjects
+      - from: local
+        source: ./go
+        destination: ./go
+      - from: local
+        source: ./src
+        destination: ./src
+      - from: local
+        source: ./appdir
+        destination: ./appdir
+    entrypoint: [ "./entrypoint.sh" ]
+
