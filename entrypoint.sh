@@ -9,4 +9,4 @@ export GOPATH=${DIR}/goProjects
 export PATH=${GOPATH}/bin:${GOROOT}/bin:${PATH}
 
 cd ${DIR}/src/symbolset/server
-./server -ss_files ss_files
+./server -host 0.0.0.0 -port 8771 -ss_files ss_files
